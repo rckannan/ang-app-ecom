@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./receipes.component.css']
 })
 export class ReceipesComponent {
+  selectedReceipe: any;
+onselectItemchild() {
+throw new Error('Method not implemented.');
+}
 
 }
