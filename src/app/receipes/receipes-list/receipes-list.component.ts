@@ -1,18 +1,41 @@
-import { Component } from '@angular/core';
+
+import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import { Recipe } from '../recipe.model';
 @Component({
   selector: 'app-receipes-list',
   templateUrl: './receipes-list.component.html',
-  styleUrls: ['./receipes-list.component.css']
+  styleUrls: ['./receipes-list.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class ReceipesListComponent {
-  recipes: Recipe[] = [
-    new Recipe("new one", "new one desc", "https://th.bing.com/th/id/OIP.maQpFJiRuDMauaTZ3N7KiQHaEo?pid=ImgDet&rs=1"),
-    new Recipe("new two", "new one desc", "https://th.bing.com/th/id/OIP.maQpFJiRuDMauaTZ3N7KiQHaEo?pid=ImgDet&rs=1"),
-    new Recipe("new three", "new one desc", "https://th.bing.com/th/id/OIP.maQpFJiRuDMauaTZ3N7KiQHaEo?pid=ImgDet&rs=1")
-  ];
-
-  constructor(){
-
+  @Output() selectItemchild = new EventEmitter<Recipe>();
+  onitemSelected(receipe : Recipe) {
+    this.selectItemchild.emit(receipe);
   }
+  cnt : number = 0;
+  liked : string = '';refvsl : string = '';
+  recipes: Recipe[] = [
+    new Recipe(
+      'new one',
+      'new one desc',
+      'https://th.bing.com/th/id/OIP.maQpFJiRuDMauaTZ3N7KiQHaEo?pid=ImgDet&rs=1'
+    ),
+    new Recipe(
+      'new two',
+      'new one desc',
+      'https://th.bing.com/th/id/OIP.maQpFJiRuDMauaTZ3N7KiQHaEo?pid=ImgDet&rs=1'
+    ),
+    new Recipe(
+      'new three',
+      'new one desc',
+      'https://th.bing.com/th/id/OIP.maQpFJiRuDMauaTZ3N7KiQHaEo?pid=ImgDet&rs=1'
+    ),
+  ];
+ 
+  // onUserLikedReceipe(userlikes: {name : string, refval : string}){
+  //   this.cnt = this.cnt +1;
+  //   this.liked = "user likes "+ userlikes.name;
+  //   this.refvsl = "user refvsl "+ userlikes.refval;
+  // }
+  constructor() {}
 }

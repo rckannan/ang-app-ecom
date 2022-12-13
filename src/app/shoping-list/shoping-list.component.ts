@@ -12,4 +12,8 @@ export class ShopingListComponent {
     new Inherident('inherid 2', 120),
     new Inherident('inherid 3', 130),
   ];
+
+  onUseraddinherident(inherid: Inherident) {
+    this.ingredients.push(inherid);
+  }
 }

@@ -1,0 +1,28 @@
+
+<a class="list-group-item clearfix" (click)="onitemSelected()">
+    <div class="col-xs-12">
+     <div class="list-group-item clearfix" >
+        <div class="pull-left">
+            <h4 class="list-group-item-heading">{{receipe.name}}</h4>
+            <p class="list-group-item-text">{{receipe.description}}</p>
+        </div>
+
+        <div class="pull-right">
+            <img [src]="receipe.imagePath" alt="image" class="img-responsive" style="max-height:100px">
+        </div>
+     </div> 
+     <!-- <div class="col-xs-3">
+        <input type="text" id="" #userinputtest  Class="form-control"  > 
+        <input type="text" id="" #userinputtestref   Class="form-control" >  
+       <input type="text" Class="form-control" id="" [(ngModel)] ="nodelpassdata" >
+       </div>
+     <div class="col-xs-3">
+       <button type="button" id="" class="btn btn-info" 
+       (click)="onUserLiked(userinputtest)">Add Cart</button>
+      </div> -->
+     
+    </div> 
+    <div class="col-xs-12">
+      <ng-Content></ng-Content>
+    </div>
+  </a>

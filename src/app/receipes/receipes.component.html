@@ -1,1 +1,13 @@
-<p>receipes works!</p>
+<div class="row">
+    <div class="col-md 5">
+        <app-receipes-list (selectItemchild)="selectedReceipe = $event"></app-receipes-list>
+    </div>
+    <div class="col-md 7">
+        <app-receipes-detail *ngIf="selectedReceipe; else noselect" [receipe]="selectedReceipe"></app-receipes-detail>
+    </div>
+
+    <ng-template #noselect><p>No item selected</p></ng-template>
+ 
+</div>
+
+
