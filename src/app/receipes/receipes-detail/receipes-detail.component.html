@@ -19,7 +19,7 @@
             </button>
       
             <ul class="dropdown-menu" >
-                <li> <a class="dropdown-item" href="#">Add Ingredient</a> </li>
+                <li> <a class="dropdown-item" (click)="onIngredentAdd()">Add Ingredient</a> </li>
                     <li> <a class="dropdown-item" href="#">Edit recipe</a></li>
                         <li> <a class="dropdown-item" href="#">Delete recipe</a></li>
             </ul>
@@ -35,7 +35,9 @@
 
 <div class="row">
     <div class="col-xs-12">
-       <h5>Inherident</h5>
+      <ul class=list-group *ngFor="let inh of receipe.inheridents">
+        <li class="list-group-item">{{inh.name}} -- {{inh.amount}}</li>
+      </ul>
     </div>
 </div>
 

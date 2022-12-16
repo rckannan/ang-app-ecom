@@ -1,10 +1,12 @@
 import {
   Component,
   EventEmitter,
+  OnInit,
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { loggingService } from 'src/app/shared/logging.service';
+
+import { receipeService } from '../receipe.service';
 import { Recipe } from '../recipe.model';
 @Component({
   selector: 'app-receipes-list',
@@ -13,40 +15,24 @@ import { Recipe } from '../recipe.model';
   encapsulation: ViewEncapsulation.Emulated,
   // providers: [loggingService],
 })
-export class ReceipesListComponent {
+export class ReceipesListComponent implements OnInit {
+  recipes: Recipe[] = [];
   @Output() selectItemchild = new EventEmitter<Recipe>();
-  onitemSelected(receipe: Recipe) {
-    this.loggingSrv.doLog('receipe-list', receipe.name);
-    this.selectItemchild.emit(receipe);
-    this.loggingSrv.loggerEvent.emit(receipe.name);
-  }
+  // onitemSelected(receipe: Recipe) {
+  //   this.loggingSrv.doLog('receipe-list', receipe.name);
+  //   this.selectItemchild.emit(receipe);
+  //   this.loggingSrv.loggerEvent.emit(receipe.name);
+  // }
   cnt: number = 0;
   liked: string = '';
   refvsl: string = '';
-  recipes: Recipe[] = [
-    new Recipe(
-      'new one',
-      'new one desc',
-      'https://th.bing.com/th/id/OIP.maQpFJiRuDMauaTZ3N7KiQHaEo?pid=ImgDet&rs=1'
-    ),
-    new Recipe(
-      'new two',
-      'new one desc',
-      'https://th.bing.com/th/id/OIP.maQpFJiRuDMauaTZ3N7KiQHaEo?pid=ImgDet&rs=1'
-    ),
-    new Recipe(
-      'new three',
-      'new one desc',
-      'https://th.bing.com/th/id/OIP.maQpFJiRuDMauaTZ3N7KiQHaEo?pid=ImgDet&rs=1'
-    ),
-  ];
 
-  // onUserLikedReceipe(userlikes: {name : string, refval : string}){
-  //   this.cnt = this.cnt +1;
-  //   this.liked = "user likes "+ userlikes.name;
-  //   this.refvsl = "user refvsl "+ userlikes.refval;
-  // }
- 
-  constructor(private loggingSrv: loggingService) { 
+  constructor(
+    // private loggingSrv: loggingService,
+    private receipeSrv: receipeService
+  ) {}
+
+  ngOnInit(): void {
+    this.recipes = this.receipeSrv.getReceipies();
   }
 }
