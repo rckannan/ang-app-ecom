@@ -1,18 +1,20 @@
-// import { Logger } from 'src/app/shared/logger.model';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Logger } from 'src/app/shared/logger.model';
+import {consoleloggingService} from 'src/app/shared/consoleLog.service'
 
-// @ServiceWorker({
-
-// })
+@Injectable()
 export class loggingService {
-  logData = [{ src: 'receipe', info: 'log info' }];
+  logData : Logger[]  = [];
 
-  constructor() {}
+  constructor(private consolelogger : consoleloggingService) {}
   doLog(srcs: string, status: string) {
-    this.logData.push({ src: srcs, info: status });
-    console.log('new log msg : ' + status);
+    this.logData.push(new Logger(   srcs,  status ));
+    this.consolelogger.doLogconsole('new log msg : ' + status);
   }
   
   doGetLog(){
     return this.logData;
   }
+
+  loggerEvent = new EventEmitter<string>();
 }

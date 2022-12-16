@@ -11,13 +11,14 @@ import { Recipe } from '../recipe.model';
   templateUrl: './receipes-list.component.html',
   styleUrls: ['./receipes-list.component.css'],
   encapsulation: ViewEncapsulation.Emulated,
-  providers: [loggingService],
+  // providers: [loggingService],
 })
 export class ReceipesListComponent {
   @Output() selectItemchild = new EventEmitter<Recipe>();
   onitemSelected(receipe: Recipe) {
     this.loggingSrv.doLog('receipe-list', receipe.name);
     this.selectItemchild.emit(receipe);
+    this.loggingSrv.loggerEvent.emit(receipe.name);
   }
   cnt: number = 0;
   liked: string = '';
@@ -45,5 +46,7 @@ export class ReceipesListComponent {
   //   this.liked = "user likes "+ userlikes.name;
   //   this.refvsl = "user refvsl "+ userlikes.refval;
   // }
-  constructor(private loggingSrv: loggingService) {}
+ 
+  constructor(private loggingSrv: loggingService) { 
+  }
 }
