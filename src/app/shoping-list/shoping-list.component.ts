@@ -1,19 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Inherident } from '../shared/inherident.model';
+import { InheridentService } from './inheridents.service';
 
 @Component({
   selector: 'app-shoping-list',
   templateUrl: './shoping-list.component.html',
   styleUrls: ['./shoping-list.component.css'],
+  providers: [],
 })
-export class ShopingListComponent {
-  ingredients = [
-    new Inherident('inherid 1', 100),
-    new Inherident('inherid 2', 120),
-    new Inherident('inherid 3', 130),
-  ];
+export class ShopingListComponent implements OnInit {
+  ingredients: Inherident[] = [];
 
-  onUseraddinherident(inherid: Inherident) {
-    this.ingredients.push(inherid);
+  constructor(private InheridentService: InheridentService) {}
+
+  ngOnInit(): void {
+    this.ingredients = this.InheridentService.goGetInheridents();
+    this.InheridentService.onNewInheridentAdded.subscribe(
+      (inh: Inherident[]) => {
+        this.ingredients = inh;
+      }
+    );
   }
+
+  // onUseraddinherident(inherid: Inherident) {
+  //   this.ingredients.push(inherid);
+  // }
 }

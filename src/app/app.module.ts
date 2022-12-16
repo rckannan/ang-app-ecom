@@ -10,6 +10,7 @@ import { ReceipeItemComponent } from './receipes/receipes-list/receipe-item/rece
 import { ShopingListComponent } from './shoping-list/shoping-list.component';
 import { ShopingEditComponent } from './shoping-list/shoping-edit/shoping-edit.component';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { InheridentService } from './shoping-list/inheridents.service';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,10 @@ import { DropdownDirective } from './shared/dropdown.directive';
     ReceipeItemComponent,
     ShopingListComponent,
     ShopingEditComponent,
-    DropdownDirective
+    DropdownDirective,
   ],
-  imports: [
-    BrowserModule,FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, FormsModule],
+  providers: [InheridentService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
