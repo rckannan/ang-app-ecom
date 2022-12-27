@@ -1,5 +1,7 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { InheridentService } from 'src/app/shoping-list/inheridents.service';
+import { receipeService } from '../receipe.service';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -8,12 +10,27 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./receipes-detail.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ReceipesDetailComponent {
-  @Input() receipe: Recipe;
+export class ReceipesDetailComponent implements OnInit {
+  // @Input() receipe: Recipe;
+  receipe : Recipe ;
+  id : number;
+  constructor(private inherdentsrv: InheridentService, private route : ActivatedRoute, 
+    private receipeservice : receipeService, private router : Router ) {
 
-  constructor(private inherdentsrv: InheridentService) {}
+  }
+  ngOnInit(): void {
+    this.route.params.subscribe((param: Params)=>{
+      this.id = +param['id'];
+     this.receipe = this.receipeservice.getReceipie(this.id );
+    });
+  }
 
   onIngredentAdd() {
     this.inherdentsrv.doPushInheridents(this.receipe.inheridents);
+  }
+
+  onEditReceipe(){
+    this.router.navigate(['../',this.id,'edit'], {relativeTo: this.route});
+    // this.router.navigate(['edit'], {relativeTo: this.route});
   }
 }

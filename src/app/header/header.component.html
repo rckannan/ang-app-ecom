@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Recipe Book</a>
+                <a class="navbar-brand" style="cursor: pointer;" routerLink="/"  >Recipe Book</a>
             </div>
 
             <!-- <div class="navbar-header">
@@ -13,7 +13,8 @@
               </div>
               <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true"> -->
             
-        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" 
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#collapsibleNavId" 
                     aria-controls="collapsibleNavId"
                         aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,10 +22,14 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#" aria-current="page" (click)="onSelectMenu('receipe')">Recipes <span class="visually-hidden">(current)</span></a>
+                    <!-- <a class="nav-link active" href="#" aria-current="page" 
+                        (click)="onSelectMenu('receipe')">Recipes <span class="visually-hidden">(current)</span></a> -->
+                        <a class="nav-link active" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"  
+                        routerLink ='/receipes'>Recipes <span class="visually-hidden">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" (click)="onSelectMenu('Shopping')">Shopping List</a>
+                    <!-- <a class="nav-link" href="#" (click)="onSelectMenu('Shopping')">Shopping List</a> -->
+                    <a class="nav-link" routerLink="/shoppinglist" routerLinkActive="active">Shopping List</a>
                 </li>
 
                 
@@ -40,8 +45,8 @@
             </button>
       
             <ul class="dropdown-menu" >
-                <li>   <a class="dropdown-item" href="#">save data</a></li>
-                    <li> <a class="dropdown-item" href="#">fetch data</a></li>
+                <li>   <a class="dropdown-item" style="cursor: pointer;">save data</a></li>
+                    <li> <a class="dropdown-item" style="cursor: pointer;">fetch data</a></li>
             </ul> 
        </div>
 

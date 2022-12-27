@@ -7,8 +7,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class HeaderComponent {
   collapsed = true;
-  @Output() selectMenu = new EventEmitter<string>();
-  onSelectMenu(mnu : string){
-    this.selectMenu.emit(mnu);
-  }
+  // @Output() selectMenu = new EventEmitter<string>();
+  // onSelectMenu(mnu : string){
+  //   this.selectMenu.emit(mnu);
+  // }
 }

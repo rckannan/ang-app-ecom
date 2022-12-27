@@ -11,6 +11,7 @@ import { ShopingListComponent } from './shoping-list/shoping-list.component';
 import { ShopingEditComponent } from './shoping-list/shoping-edit/shoping-edit.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { InheridentService } from './shoping-list/inheridents.service';
+import { AppRouteModule } from './app-route.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { InheridentService } from './shoping-list/inheridents.service';
     ShopingEditComponent,
     DropdownDirective,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, AppRouteModule],
   providers: [InheridentService],
   bootstrap: [AppComponent],
 })

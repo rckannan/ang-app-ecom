@@ -7,6 +7,7 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { receipeService } from '../../receipe.service';
 import { Recipe } from '../../recipe.model';
 
@@ -16,10 +17,14 @@ import { Recipe } from '../../recipe.model';
   styleUrls: ['./receipe-item.component.css'],
 })
 export class ReceipeItemComponent implements OnInit {
+  // receipe: Recipe;
   @Input() receipe: Recipe;
+
   @Output() itemSelected = new EventEmitter<void>();
 
-  constructor(private receipeService: receipeService) {}
+  @Input() index : number;
+
+  constructor(private receipeService: receipeService, private route : ActivatedRoute) {}
 
   onitemSelected() {
     // this.itemSelected.emit();
@@ -28,9 +33,14 @@ export class ReceipeItemComponent implements OnInit {
 
   // receipeNme: string = '';
   // nodelpassdata: string='';
+
   ngOnInit(): void {
-    // this.receipeNme ='';
+     this.route.params.subscribe((param : Params)=>{
+      this.index = +param['id'];
+      // this.receipe = this.receipeService.getReceipie(this.index);
+     });
   }
+
   // @Input('receipeItem') receipeItem: {
   //   name: string;
   //   description: string;

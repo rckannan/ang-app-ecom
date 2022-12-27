@@ -3,10 +3,12 @@
         <app-receipes-list ></app-receipes-list>
     </div>
     <div class="col-md 7">
-        <app-receipes-detail *ngIf="selectedReceipe; else noselect" [receipe]="selectedReceipe"></app-receipes-detail>
+        <router-outlet></router-outlet>
+        <!-- <app-receipes-detail></app-receipes-detail> -->
+        <!-- <app-receipes-detail *ngIf="selectedReceipe; else noselect" [receipe]="selectedReceipe"></app-receipes-detail> -->
     </div>
 
-    <ng-template #noselect><p>No item selected</p></ng-template>
+    <!-- <ng-template #noselect><p>No item selected</p></ng-template> -->
  
 </div>
 

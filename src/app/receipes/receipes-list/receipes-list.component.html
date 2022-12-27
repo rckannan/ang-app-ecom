@@ -1,7 +1,7 @@
  
 <div class="row">
     <div class="col-xs-4">
-        <button type="button" name="" id="" class="btn btn-primary" >New Receipe</button>
+        <button type="button" name="" id="" class="btn btn-primary" (click)="onNewReceipe()">New Receipe</button>
         </div>
      
         
@@ -10,9 +10,11 @@
         </div> -->
 </div>
 <div class="row"><div class="col-xs-12">
-    <app-receipe-item *ngFor="let recipe of recipes" [receipe]="recipe" >
+    <!-- <app-receipe-item *ngFor="let recipe of recipes" [receipe]="recipe" > -->
     <!-- (itemSelected)="onitemSelected(recipe)"> -->
     <!-- <h1> {{cnt}}</h1> -->
+
+    <app-receipe-item *ngFor="let recipe of recipes; let i = index" [index]="i" [receipe]="recipe" >
 </app-receipe-item>
 </div>
 </div>

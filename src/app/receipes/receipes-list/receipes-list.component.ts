@@ -5,6 +5,7 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { receipeService } from '../receipe.service';
 import { Recipe } from '../recipe.model';
@@ -29,10 +30,14 @@ export class ReceipesListComponent implements OnInit {
 
   constructor(
     // private loggingSrv: loggingService,
-    private receipeSrv: receipeService
+    private receipeSrv: receipeService, private route: ActivatedRoute, private router: Router
   ) {}
 
   ngOnInit(): void {
     this.recipes = this.receipeSrv.getReceipies();
+  }
+
+  onNewReceipe(){
+      this.router.navigate(['new'], {relativeTo: this.route});
   }
 }
