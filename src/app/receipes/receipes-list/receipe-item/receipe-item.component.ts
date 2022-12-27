@@ -28,7 +28,7 @@ export class ReceipeItemComponent implements OnInit {
 
   onitemSelected() {
     // this.itemSelected.emit();
-    this.receipeService.onSelectedReceipe.emit(this.receipe);
+    this.receipeService.onSelectedReceipe.next(this.receipe);
   }
 
   // receipeNme: string = '';

@@ -21,7 +21,7 @@ export class ShopingEditComponent {
       this.inherident_name.nativeElement.value,
       this.inherident_amount.nativeElement.value
     );
-    this.InheridentService.addInheridentEvent.emit(inheritentObj);
+    this.InheridentService.addInheridentEvent.next(inheritentObj);
     // this.ShoppingListService.addInheridentEvent(inheritentObj);
     // this.addInherident.emit(inheritentObj);
   }

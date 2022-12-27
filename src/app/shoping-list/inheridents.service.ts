@@ -1,4 +1,5 @@
 import { EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Inherident } from '../shared/inherident.model';
 export class InheridentService {
   private ingredients = [
@@ -9,7 +10,7 @@ export class InheridentService {
 
   onNewInheridentAdded = new EventEmitter<Inherident[]>();
 
-  addInheridentEvent = new EventEmitter<Inherident>();
+  addInheridentEvent = new Subject<Inherident>();
   constructor() {
     this.addInheridentEvent.subscribe((inherident: Inherident) => {
       this.doAddIngerident(inherident);

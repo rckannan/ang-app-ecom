@@ -1,4 +1,5 @@
-import { EventEmitter } from '@angular/core';
+// import { EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Recipe } from 'src/app/receipes/recipe.model';
 import { Inherident } from '../shared/inherident.model';
 export class receipeService {
@@ -37,5 +38,5 @@ export class receipeService {
     return this.recipes.slice()[index];
   }
 
-  onSelectedReceipe = new EventEmitter<Recipe>();
+  onSelectedReceipe = new Subject<Recipe>();
 }
