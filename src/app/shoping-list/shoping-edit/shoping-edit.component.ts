@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Inherident } from 'src/app/shared/inherident.model';
 import { InheridentService } from '../inheridents.service';
 
@@ -16,10 +17,10 @@ export class ShopingEditComponent {
   @ViewChild('inherident_amount') inherident_amount: ElementRef;
   // @Output() addInherident = new EventEmitter<Inherident>();
 
-  onUserAdd() {
+  onUserAdd(formCtrl : NgForm) {
     var inheritentObj = new Inherident(
-      this.inherident_name.nativeElement.value,
-      this.inherident_amount.nativeElement.value
+       formCtrl.value.name,
+      formCtrl.value.amount
     );
     this.InheridentService.addInheridentEvent.next(inheritentObj);
     // this.ShoppingListService.addInheridentEvent(inheritentObj);
